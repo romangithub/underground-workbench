@@ -115,5 +115,5 @@ Treat as a **working local prototype** — not a claim that it already beats Flo
 
 ## Author
 
-**Roman K** — hydrogeology consulting · Lisbon  
+**Roman K** — hydrogeology  
 Email: [kovalevrm@gmail.com](mailto:kovalevrm@gmail.com)
