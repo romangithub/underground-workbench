@@ -1,0 +1,5 @@
+FIELD finished v2 changes:
+- runner.py no longer imports numpy; HDS reader uses only stdlib struct/list arrays.
+- no /mnt/data/mf6 fallback in runner resolver.
+- verify:stage points to real master/playwright scripts.
+- functional FIELD pipeline preserved from operator-accepted build.

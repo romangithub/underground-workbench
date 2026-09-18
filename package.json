@@ -1,0 +1,9 @@
+{
+  "name": "underground-workbench",
+  "version": "1.0.0",
+  "description": "UNDERGROUND Workbench — unified local app (MARKET finished + platform MF6)",
+  "scripts": {
+    "start": "./start.sh",
+    "verify:stage": "python3 apps/underground_workbench/scripts/master_verify_market_finished.py && python3 apps/underground_workbench/tests/playwright_market_finished.py"
+  }
+}

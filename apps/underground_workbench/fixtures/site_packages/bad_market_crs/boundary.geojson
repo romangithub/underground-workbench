@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "model_boundary",
+        "name": "bad_market_crs"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              60
+            ],
+            [
+              31,
+              60
+            ],
+            [
+              31,
+              61
+            ],
+            [
+              30,
+              61
+            ],
+            [
+              30,
+              60
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "./start.sh",
+    "verify:stage": "python3 scripts/master_verify_market_finished.py && python3 tests/playwright_market_finished.py"
+  },
+  "name": "underground-workbench-field-finished-v2"
+}

@@ -1,0 +1,23 @@
+{
+  "site_id": "bad_market_no_layers",
+  "site_name": "Client Site Beta",
+  "crs": "EPSG:32633",
+  "units": "meters",
+  "spacing": 150,
+  "hydraulic": {
+    "k_by_layer": [
+      8.0,
+      4.0,
+      2.0,
+      1.0,
+      0.6
+    ]
+  },
+  "chd": {
+    "west": 82.0,
+    "east": 71.0,
+    "vertical_gradient": -0.35
+  },
+  "initial_head": 77.5,
+  "origin_tag": "beta_shifted_origin"
+}

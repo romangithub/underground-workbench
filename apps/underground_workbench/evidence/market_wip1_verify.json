@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "sites": {
+    "client_site_alpha": {
+      "grid": {
+        "nlay": 6,
+        "nrow": 10,
+        "ncol": 14,
+        "delr": 100.0,
+        "delc": 100.0,
+        "top": 129.36624,
+        "botm": [
+          108.0,
+          88.0,
+          68.0,
+          48.0,
+          28.0,
+          8.0
+        ]
+      },
+      "crs": "EPSG:32637",
+      "provenance_files": [
+        "project_meta.json",
+        "boundary.geojson",
+        "wells.geojson",
+        "wells.csv",
+        "observations.csv",
+        "surface_top.csv",
+        "rivers.geojson"
+      ]
+    },
+    "client_site_beta": {
+      "grid": {
+        "nlay": 5,
+        "nrow": 10,
+        "ncol": 12,
+        "delr": 150.0,
+        "delc": 150.0,
+        "top": 88.36624,
+        "botm": [
+          67.0,
+          47.0,
+          27.0,
+          7.0,
+          -13.0
+        ]
+      },
+      "crs": "EPSG:32633",
+      "provenance_files": [
+        "project_meta.json",
+        "boundary.geojson",
+        "wells.geojson",
+        "wells.csv",
+        "observations.csv",
+        "surface_top.csv",
+        "rivers.geojson"
+      ]
+    }
+  },
+  "workflows": {
+    "client_site_alpha": {
+      "baseline_mae": 1.9953214624728648,
+      "improvement": 0.9528179824045597,
+      "baseline_hds_sha256": "45505c4b04ffffd92c31088416fd582104deedbb1e636bdc45f898330b12ce1b",
+      "best_hds_sha256": "d39dc1a96655fbab10cd77600430bf33edcefefe6db8a8c4f765831912d87ed5"
+    },
+    "client_site_beta": {
+      "baseline_mae": 1.9533646319211633,
+      "improvement": 1.014711938130426,
+      "baseline_hds_sha256": "db2f1f7e88367d64622ac8962e1113157133f4a92060588cfb310c78fdb01135",
+      "best_hds_sha256": "5dfcc9a56ba3d26a829a525318528c473a84f0e2ee5c672be2a0b93b618ea4d5"
+    }
+  }
+}

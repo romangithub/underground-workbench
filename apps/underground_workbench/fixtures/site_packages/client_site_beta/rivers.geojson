@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "RIV-01",
+        "layer": 1,
+        "cond": 1500,
+        "rbot_offset": -2.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            392180.0,
+            5121170.0
+          ],
+          [
+            393620.0,
+            5121080.0
+          ]
+        ]
+      }
+    }
+  ]
+}

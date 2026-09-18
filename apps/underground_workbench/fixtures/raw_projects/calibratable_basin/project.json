@@ -1,0 +1,136 @@
+{
+  "project_id": "field_calibratable_basin",
+  "name": "Field Calibratable Basin",
+  "crs": "EPSG:32637",
+  "units": {
+    "length": "meters",
+    "time": "days"
+  },
+  "grid": {
+    "nlay": 6,
+    "nrow": 16,
+    "ncol": 12,
+    "delr": 100.0,
+    "delc": 100.0,
+    "top": 120.0,
+    "botm": [
+      105,
+      90,
+      75,
+      60,
+      45,
+      30
+    ]
+  },
+  "hydraulic": {
+    "k_by_layer": [
+      15,
+      12,
+      8,
+      4,
+      2,
+      1
+    ]
+  },
+  "initial_head": 110.0,
+  "chd": {
+    "west": 116.0,
+    "east": 104.0,
+    "vertical_gradient": -0.5
+  },
+  "wells": [
+    {
+      "id": "W-01",
+      "layer": 1,
+      "row": 6,
+      "col": 6,
+      "q": -800
+    },
+    {
+      "id": "W-02",
+      "layer": 1,
+      "row": 10,
+      "col": 8,
+      "q": -600
+    },
+    {
+      "id": "W-03",
+      "layer": 2,
+      "row": 9,
+      "col": 5,
+      "q": -350
+    },
+    {
+      "id": "W-04",
+      "layer": 3,
+      "row": 12,
+      "col": 7,
+      "q": -300
+    }
+  ],
+  "rivers": [
+    {
+      "id": "RIV-01",
+      "layer": 1,
+      "row": 4,
+      "col_start": 2,
+      "col_end": 11,
+      "stage_start": 112.0,
+      "stage_gradient": -0.7,
+      "cond": 1200.0,
+      "rbot_offset": -4.0
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-01",
+      "layer": 1,
+      "row": 5,
+      "col": 4,
+      "observed_head": 112.287
+    },
+    {
+      "id": "OBS-02",
+      "layer": 1,
+      "row": 6,
+      "col": 6,
+      "observed_head": 109.899
+    },
+    {
+      "id": "OBS-03",
+      "layer": 1,
+      "row": 10,
+      "col": 8,
+      "observed_head": 108.238
+    },
+    {
+      "id": "OBS-04",
+      "layer": 2,
+      "row": 9,
+      "col": 5,
+      "observed_head": 111.577
+    },
+    {
+      "id": "OBS-05",
+      "layer": 3,
+      "row": 12,
+      "col": 7,
+      "observed_head": 109.587
+    },
+    {
+      "id": "OBS-06",
+      "layer": 1,
+      "row": 4,
+      "col": 9,
+      "observed_head": 107.808
+    },
+    {
+      "id": "OBS-07",
+      "layer": 4,
+      "row": 8,
+      "col": 6,
+      "observed_head": 110.499
+    }
+  ],
+  "survey_note": "Independent survey targets: hydrostatic/lateral gradient adjusted by field datum, not copied from baseline HDS."
+}

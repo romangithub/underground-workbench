@@ -1,0 +1,40 @@
+{
+  "site_id": "bad_market_crs",
+  "site_name": "Bad Market Crs",
+  "crs": "EPSG:4326",
+  "units": "meters",
+  "spacing": 0.01,
+  "layers": [
+    {
+      "name": "L1",
+      "bottom": 80
+    },
+    {
+      "name": "L2",
+      "bottom": 60
+    },
+    {
+      "name": "L3",
+      "bottom": 40
+    },
+    {
+      "name": "L4",
+      "bottom": 20
+    }
+  ],
+  "hydraulic": {
+    "k_by_layer": [
+      8.0,
+      4.0,
+      2.0,
+      1.0
+    ]
+  },
+  "chd": {
+    "west": 98,
+    "east": 91,
+    "vertical_gradient": -0.35
+  },
+  "initial_head": 95.5,
+  "origin_tag": "bad_crs"
+}

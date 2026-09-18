@@ -1,0 +1,8 @@
+id,x,y,layer,observed_head,survey_source
+OBS-A,392360.0,5120450.0,1,82.15,independent_level_survey_2026Q3
+OBS-B,392756.0,5120720.0,1,79.23,independent_level_survey_2026Q3
+OBS-C,393170.0,5120930.0,2,76.7,independent_level_survey_2026Q3
+OBS-D,393440.0,5120540.0,3,74.4,independent_level_survey_2026Q3
+OBS-E,392612.0,5121125.0,2,80.16,independent_level_survey_2026Q3
+OBS-F,393044.0,5120330.0,1,77.57,independent_level_survey_2026Q3
+OBS-G,393296.0,5120810.0,4,75.15,independent_level_survey_2026Q3

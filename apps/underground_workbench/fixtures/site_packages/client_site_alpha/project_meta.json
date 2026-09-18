@@ -1,0 +1,50 @@
+{
+  "site_id": "client_site_alpha",
+  "site_name": "Client Site Alpha",
+  "crs": "EPSG:32637",
+  "units": "meters",
+  "spacing": 100,
+  "layers": [
+    {
+      "name": "L1",
+      "bottom": 108.0
+    },
+    {
+      "name": "L2",
+      "bottom": 88.0
+    },
+    {
+      "name": "L3",
+      "bottom": 68.0
+    },
+    {
+      "name": "L4",
+      "bottom": 48.0
+    },
+    {
+      "name": "L5",
+      "bottom": 28.0
+    },
+    {
+      "name": "L6",
+      "bottom": 8.0
+    }
+  ],
+  "hydraulic": {
+    "k_by_layer": [
+      8.0,
+      4.0,
+      2.0,
+      1.0,
+      0.6,
+      0.3
+    ]
+  },
+  "chd": {
+    "west": 118.0,
+    "east": 104.0,
+    "vertical_gradient": -0.35
+  },
+  "initial_head": 112.0,
+  "origin_tag": "alpha_real_extents"
+}

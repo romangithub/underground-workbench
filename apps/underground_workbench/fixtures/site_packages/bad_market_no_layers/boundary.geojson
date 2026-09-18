@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "model_boundary",
+        "name": "client_site_beta"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              392000,
+              5120000
+            ],
+            [
+              393800,
+              5120000
+            ],
+            [
+              393800,
+              5121500
+            ],
+            [
+              392000,
+              5121500
+            ],
+            [
+              392000,
+              5120000
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+1. git clone https://github.com/romangithub/underground-workbench.git
+2. cd underground-workbench
+3. Mac/Linux: ./start.sh
+   Windows:  apps\underground_workbench\start.bat
+4. Browser: http://127.0.0.1:18888
+5. Demo zip: apps/underground_workbench/fixtures/site_packages/client_site_alpha.zip

@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "evidence": {
+    "dataset": "calibratable_basin",
+    "grid": {
+      "nlay": 6,
+      "nrow": 16,
+      "ncol": 12,
+      "delr": 100.0,
+      "delc": 100.0,
+      "top": 120.0,
+      "botm": [
+        105,
+        90,
+        75,
+        60,
+        45,
+        30
+      ]
+    },
+    "findings": [],
+    "baseline": {
+      "run": {
+        "exit_code": 0,
+        "stdout_contains_modflow": true,
+        "hds_size": 9528,
+        "cbc_size": 108784,
+        "hds_sha256": "188960c48429256cc158dd405a8611a0e76ec3103618b589881669fe870e458f",
+        "cbc_sha256": "48dea8abdfbc77d7322aabdfe529cb574833974c043ba6f13e10dbae1890809d",
+        "mf6_stdout": "/tmp/market_build/underground_workbench_field_finished_v3/apps/underground_workbench/runs/baseline/mf6.stdout"
+      },
+      "calibration": {
+        "obs": [
+          {
+            "id": "OBS-01",
+            "layer": 1,
+            "row": 5,
+            "col": 4,
+            "observed_head": 112.287,
+            "computed_head": 111.19823182018276,
+            "residual": 1.0887681798172508
+          },
+          {
+            "id": "OBS-02",
+            "layer": 1,
+            "row": 6,
+            "col": 6,
+            "observed_head": 109.899,
+            "computed_head": 108.76389819455541,
+            "residual": 1.1351018054445916
+          },
+          {
+            "id": "OBS-03",
+            "layer": 1,
+            "row": 10,
+            "col": 8,
+            "observed_head": 108.238,
+            "computed_head": 106.85434683802723,
+            "residual": 1.3836531619727737
+          },
+          {
+            "id": "OBS-04",
+            "layer": 2,
+            "row": 9,
+            "col": 5,
+            "observed_head": 111.577,
+            "computed_head": 110.22932865417823,
+            "residual": 1.347671345821766
+          },
+          {
+            "id": "OBS-05",
+            "layer": 3,
+            "row": 12,
+            "col": 7,
+            "observed_head": 109.587,
+            "computed_head": 108.16206354516619,
+            "residual": 1.4249364548338121
+          },
+          {
+            "id": "OBS-06",
+            "layer": 1,
+            "row": 4,
+            "col": 9,
+            "observed_head": 107.808,
+            "computed_head": 106.86860151074342,
+            "residual": 0.9393984892565896
+          },
+          {
+            "id": "OBS-07",
+            "layer": 4,
+            "row": 8,
+            "col": 6,
+            "observed_head": 110.499,
+            "computed_head": 109.21477682059688,
+            "residual": 1.2842231794031136
+          }
+        ],
+        "finite_obs_count": 7,
+        "dry_rejected_count": 0,
+        "mae": 1.2291075166499854,
+        "rmse": 1.240203265801941
+      },
+      "package_sha256": "7f91e76923e629367aa2132889b4053e66c1a56af03d565da796e8b228911afc"
+    },
+    "best": {
+      "name": "chd_plus_2",
+      "run": {
+        "exit_code": 0,
+        "stdout_contains_modflow": true,
+        "hds_size": 9528,
+        "cbc_size": 108784,
+        "hds_sha256": "bcd4864fe8aa4890dd0618a09df7cd0785d5636b687cb9d19126d491849d7e47",
+        "cbc_sha256": "b00120a1f7923ea18c8c20edb2c723965741432da662844f145ea02d93a7d747",
+        "mf6_stdout": "/tmp/market_build/underground_workbench_field_finished_v3/apps/underground_workbench/runs/chd_plus_2/mf6.stdout"
+      },
+      "calibration": {
+        "obs": [
+          {
+            "id": "OBS-01",
+            "layer": 1,
+            "row": 5,
+            "col": 4,
+            "observed_head": 112.287,
+            "computed_head": 112.02341130428512,
+            "residual": 0.26358869571488697
+          },
+          {
+            "id": "OBS-02",
+            "layer": 1,
+            "row": 6,
+            "col": 6,
+            "observed_head": 109.899,
+            "computed_head": 109.72278192944535,
+            "residual": 0.1762180705546541
+          },
+          {
+            "id": "OBS-03",
+            "layer": 1,
+            "row": 10,
+            "col": 8,
+            "observed_head": 108.238,
+            "computed_head": 108.52171212606572,
+            "residual": -0.2837121260657227
+          },
+          {
+            "id": "OBS-04",
+            "layer": 2,
+            "row": 9,
+            "col": 5,
+            "observed_head": 111.577,
+            "computed_head": 111.79325569987815,
+            "residual": -0.21625569987814686
+          },
+          {
+            "id": "OBS-05",
+            "layer": 3,
+            "row": 12,
+            "col": 7,
+            "observed_head": 109.587,
+            "computed_head": 109.94628118942423,
+            "residual": -0.35928118942422316
+          },
+          {
+            "id": "OBS-06",
+            "layer": 1,
+            "row": 4,
+            "col": 9,
+            "observed_head": 107.808,
+            "computed_head": 107.2668704620504,
+            "residual": 0.5411295379496011
+          },
+          {
+            "id": "OBS-07",
+            "layer": 4,
+            "row": 8,
+            "col": 6,
+            "observed_head": 110.499,
+            "computed_head": 110.59878154980396,
+            "residual": -0.09978154980396425
+          }
+        ],
+        "finite_obs_count": 7,
+        "dry_rejected_count": 0,
+        "mae": 0.27713812419874273,
+        "rmse": 0.306978690442865
+      },
+      "workspace": "/tmp/market_build/underground_workbench_field_finished_v3/apps/underground_workbench/runs/chd_plus_2",
+      "package_sha256": "0b70827d3425ffd62b71daf385d0299f5eee0b5a8f86bd87e821945e978e093a"
+    },
+    "improvement": 0.9519693924512427,
+    "native_solver": "mf6 subprocess only",
+    "fallback_numeric_heads_present": false
+  }
+}

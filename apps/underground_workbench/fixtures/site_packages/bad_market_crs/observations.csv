@@ -1,0 +1,8 @@
+id,x,y,layer,observed_head,survey_source
+OBS-A,30.2,60.3,1,98.95,independent_level_survey_2026Q3
+OBS-B,30.42,60.48,1,96.91,independent_level_survey_2026Q3
+OBS-C,30.65,60.62,2,95.3,independent_level_survey_2026Q3
+OBS-D,30.8,60.36,3,93.6,independent_level_survey_2026Q3
+OBS-E,30.34,60.75,2,97.52,independent_level_survey_2026Q3
+OBS-F,30.58,60.22,1,95.89,independent_level_survey_2026Q3
+OBS-G,30.72,60.54,4,94.03,independent_level_survey_2026Q3

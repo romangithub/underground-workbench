@@ -1,0 +1,45 @@
+{
+  "site_id": "client_site_beta",
+  "site_name": "Client Site Beta",
+  "crs": "EPSG:32633",
+  "units": "meters",
+  "spacing": 150,
+  "layers": [
+    {
+      "name": "L1",
+      "bottom": 67.0
+    },
+    {
+      "name": "L2",
+      "bottom": 47.0
+    },
+    {
+      "name": "L3",
+      "bottom": 27.0
+    },
+    {
+      "name": "L4",
+      "bottom": 7.0
+    },
+    {
+      "name": "L5",
+      "bottom": -13.0
+    }
+  ],
+  "hydraulic": {
+    "k_by_layer": [
+      8.0,
+      4.0,
+      2.0,
+      1.0,
+      0.6
+    ]
+  },
+  "chd": {
+    "west": 82.0,
+    "east": 71.0,
+    "vertical_gradient": -0.35
+  },
+  "initial_head": 77.5,
+  "origin_tag": "beta_shifted_origin"
+}
