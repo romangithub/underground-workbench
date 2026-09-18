@@ -111,5 +111,5 @@ Treat this as a **working prototype / local product candidate**, not a claim tha
 
 ## Contact
 
-Roman K — hydrogeology  
+Roman K — hydrogeology
 Email: kovalevrm@gmail.com
