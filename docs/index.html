@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UNDERGROUND Workbench — MODFLOW 6 workflow</title>
+  <meta name="description" content="Local hydrogeology workbench: import → native USGS MODFLOW 6 → calibrate → 3D → engineering report." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #faf8f4;
+      --white: #ffffff;
+      --ink: #1c2a2b;
+      --muted: #5a6b6c;
+      --teal: #0a4a4e;
+      --sage: #a8c5a0;
+      --sage-deep: #7fa376;
+      --line: #e4e0d8;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 17px;
+    }
+    a { color: var(--teal); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; gap: 16px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--teal); font-weight: 700; }
+    .mark {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--teal);
+      display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 700;
+    }
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; font-weight: 500; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--teal); }
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 8px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      border: 1px solid transparent; transition: .15s ease;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: #083d41; }
+    .btn-ghost { background: transparent; color: var(--teal); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--teal); }
+    .btn-sage { background: var(--sage); color: var(--teal); }
+    .btn-sage:hover { background: var(--sage-deep); color: #fff; }
+
+    .hero {
+      padding: 72px 0 56px;
+      background:
+        radial-gradient(ellipse 80% 60% at 90% 10%, rgba(168,197,160,.35), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 0% 80%, rgba(10,74,78,.06), transparent 50%),
+        var(--paper);
+    }
+    .eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--sage-deep); margin-bottom: 14px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 700; color: var(--teal); line-height: 1.15; max-width: 16ch;
+      margin-bottom: 18px;
+    }
+    .lede { font-size: 1.15rem; color: var(--muted); max-width: 42rem; margin-bottom: 28px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+      background: var(--white); border: 1px solid var(--line); color: var(--teal);
+    }
+
+    section { padding: 56px 0; }
+    section + section { border-top: 1px solid var(--line); }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.75rem; color: var(--teal); margin-bottom: 12px;
+    }
+    .section-lead { color: var(--muted); max-width: 40rem; margin-bottom: 28px; }
+
+    .grid-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    @media (max-width: 800px) { .grid-3 { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px 20px; box-shadow: 0 1px 0 rgba(10,74,78,.04);
+    }
+    .card h3 { font-size: 1.05rem; color: var(--teal); margin-bottom: 8px; }
+    .card p { font-size: .95rem; color: var(--muted); }
+
+    .steps {
+      display: grid; gap: 10px;
+    }
+    .step {
+      display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start;
+      background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px;
+    }
+    .num {
+      width: 40px; height: 40px; border-radius: 10px; background: #eef5ee;
+      color: var(--teal); font-weight: 700; display: grid; place-items: center; font-size: 14px;
+    }
+    .step strong { display: block; color: var(--teal); margin-bottom: 2px; }
+    .step span { color: var(--muted); font-size: .95rem; }
+
+    table {
+      width: 100%; border-collapse: collapse; background: var(--white);
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: .92rem;
+    }
+    th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f0f4f0; color: var(--teal); font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+
+    .note {
+      margin-top: 20px; padding: 16px 18px; border-radius: 12px;
+      background: #f3f7f3; border: 1px solid #d5e4d3; color: var(--muted); font-size: .95rem;
+    }
+
+    footer {
+      padding: 40px 0 56px; border-top: 1px solid var(--line); background: var(--white);
+    }
+    footer p { color: var(--muted); font-size: .9rem; }
+    footer .foot-brand { color: var(--teal); font-weight: 700; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="mark">UW</span>
+        <span>UNDERGROUND Workbench</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#why">Why</a>
+        <a href="#flow">Workflow</a>
+        <a href="#compare">Compare</a>
+        <a href="#start">Start</a>
+        <a href="https://github.com/romangithub/underground-workbench">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">USGS MODFLOW 6 · local workflow</p>
+        <h1>Groundwater modelling, from site package to report</h1>
+        <p class="lede">
+          UNDERGROUND Workbench wraps official free USGS MODFLOW 6 in one local loop:
+          import → build → run → calibrate → Plan / Section / 3D → engineering report —
+          without buying an enterprise GUI seat.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/romangithub/underground-workbench">View on GitHub</a>
+          <a class="btn btn-sage" href="#start">Quick start</a>
+          <a class="btn btn-ghost" href="mailto:kovalevrm@gmail.com">Contact Roman K</a>
+        </div>
+        <div class="pills">
+          <span class="pill">Native mf6 only</span>
+          <span class="pill">GeoJSON / shapefile import</span>
+          <span class="pill">Calibration · MAE</span>
+          <span class="pill">WebGL 3D</span>
+          <span class="pill">Light UI</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap">
+        <h2>Why this exists</h2>
+        <p class="section-lead">
+          The solver is already free. What costs time is stitching import, run, plots, and a deliverable report.
+          Workbench targets that glue — not a new numerical engine.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Free stack</h3>
+            <p>mf6 + ModelMuse / FloPy — full power, you assemble the pipeline yourself.</p>
+          </article>
+          <article class="card">
+            <h3>Paid GUIs</h3>
+            <p>Flex, GMS, FEFLOW — mature products, high seat cost and vendor lock.</p>
+          </article>
+          <article class="card">
+            <h3>Workbench</h3>
+            <p>One local UI on native mf6: import site package → verifyable report path.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="wrap">
+        <h2>Default workflow</h2>
+        <p class="section-lead">Same physics as USGS MODFLOW 6. Different packaging of the day-to-day loop.</p>
+        <div class="steps">
+          <div class="step"><div class="num">01</div><div><strong>Import</strong><span>Site package: boundary, wells, observations, surface, optional rivers</span></div></div>
+          <div class="step"><div class="num">02</div><div><strong>Build</strong><span>Structured grid from extents / spacing; layers and top surface</span></div></div>
+          <div class="step"><div class="num">03</div><div><strong>Run</strong><span>Native USGS mf6 subprocess — real HDS/CBC, not prebaked heads</span></div></div>
+          <div class="step"><div class="num">04</div><div><strong>Calibrate</strong><span>Observed vs computed heads, MAE / improvement, residuals</span></div></div>
+          <div class="step"><div class="num">05</div><div><strong>View &amp; report</strong><span>Plan / Section / 3D + engineering report with provenance</span></div></div>
+        </div>
+        <p class="note">
+          Demo fixtures (<code>client_site_alpha</code> / <code>beta</code>) are synthetic.
+          No personal data and no live client object — see
+          <a href="./SITE_PACKAGES_FILE_AUDIT.md">site package audit</a>.
+        </p>
+      </div>
+    </section>
+
+    <section id="compare">
+      <div class="wrap">
+        <h2>Free · Paid · Ours</h2>
+        <p class="section-lead">We compare the path to a deliverable — not “whose mf6 binary is better”.</p>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr><th></th><th>Free</th><th>Paid</th><th>Workbench</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Solver</td><td>USGS mf6</td><td>Often mf6 / FE</td><td><strong>Native USGS mf6</strong></td></tr>
+              <tr><td>Workflow</td><td>You assemble</td><td>Full commercial GUI</td><td>Import → report in one app</td></tr>
+              <tr><td>Cost</td><td>$0</td><td>High / seat / year</td><td>Local app</td></tr>
+              <tr><td>Strength</td><td>Scripts</td><td>Maturity</td><td>One loop + verify</td></tr>
+              <tr><td>Weakness</td><td>Manual glue</td><td>Vendor lock</td><td>Prove on your live sites</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <h2>Quick start</h2>
+        <p class="section-lead">Mac Apple Silicon. First run downloads official USGS mf6 (~120 MB).</p>
+        <div class="card" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; color: var(--teal);">
+          chmod +x start.sh apps/underground_workbench/start.sh<br />
+          ./start.sh<br />
+          # open http://127.0.0.1:18888
+        </div>
+        <p style="margin-top: 20px; color: var(--muted);">
+          Full write-up, package format, and honesty about status:
+          <a href="https://github.com/romangithub/underground-workbench">README on GitHub</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="foot-brand">UNDERGROUND Workbench</p>
+      <p>Roman K · Lisbon · <a href="mailto:kovalevrm@gmail.com">kovalevrm@gmail.com</a></p>
+      <p style="margin-top:8px">Engine: USGS MODFLOW 6 (free). UI © Roman K.</p>
+    </div>
+  </footer>
+</body>
+</html>
